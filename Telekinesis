@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PushRocks : MonoBehaviour
+{
+    [SerializeField] private int _force;
+    [SerializeField] private int _impulse;
+
+    private Rigidbody[] _body;
+
+    private void Start()
+    {
+        _body = gameObject.GetComponentsInChildren<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < _body.Length; i++)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                _body[i].AddForce(Vector3.up * _force, ForceMode.Force);
+            }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                _body[i].AddForce(Vector3.left * _impulse, ForceMode.Impulse);
+            }
+        }        
+    }
+}
