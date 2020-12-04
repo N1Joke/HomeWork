@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+public class PlaneMover : MonoBehaviour
+{
+    [SerializeField] private int _force;
+    private Rigidbody _rigidbody;
+
+    private void Update()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.AddForce(Vector3.back * _force, ForceMode.Force);
+    }   
+}
