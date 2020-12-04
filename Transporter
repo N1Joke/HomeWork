@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+public class Transporter : MonoBehaviour
+{
+    [SerializeField] private float _Force;
+
+    private Rigidbody _rigidbody;
+
+    private void OnCollisionStay(Collision collision)
+    {
+        _rigidbody = collision.rigidbody;
+        _rigidbody.AddForce(Vector3.right * _Force, ForceMode.Force);
+    }
+    
+}
